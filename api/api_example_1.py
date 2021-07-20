@@ -2,7 +2,7 @@ import requests
 
 def ziskaj_data(mesto):
     base_url = "https://goweather.herokuapp.com/weather/"
-    request_url = base_url + city
+    request_url = base_url + mesto
 
     response = requests.get(request_url)
 
@@ -11,11 +11,12 @@ def ziskaj_data(mesto):
         print(response.text)
         return None
     
-    return response
+    return response.json()
 
 
 def naformatuj_odpoved(city, data):
     # poriesit krajne pripady?
+    print(data)
     current_temperature = data['temperature']
     print("V meste", city, "je dnes", current_temperature, "stupnov Celzia.")
     print("Pozrime sa na predpoved na jednotlive dni.")
@@ -36,7 +37,7 @@ def priprav_oblecenie(den):
     # {"day":"1","temperature":"+24 °C","wind":"24 km/h"}
     # uloha :)
 
-    return
+    return "sem ide tvoj kod"
 
 
 def main():
@@ -47,6 +48,8 @@ def main():
 
     data = ziskaj_data(city)
     naformatuj_odpoved(city, data)
+
+main()
 
 # 1: dorob funkciu "priprav_oblecenie"
 
